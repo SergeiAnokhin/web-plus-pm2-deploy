@@ -19,7 +19,7 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy': 'scp ./*.env.deploy sa_anokhin@158.160.27.79:/home/sa_anokhin/frontend/source/frontend',
+      'pre-deploy-local': 'scp ./*.env.deploy sa_anokhin@158.160.27.79:/home/sa_anokhin/frontend/source/frontend',
       'post-deploy': 'cd frontend/source/frontend && npm i && npm run build',
     },
   },
