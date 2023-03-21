@@ -4,13 +4,8 @@ const {
   DEPLOY_USER, DEPLOY_HOST, DEPLOY_PATH, DEPLOY_REF = 'origin/master', DEPLOY_REPO,
 } = process.env;
 
-console.log(DEPLOY_HOST);
-
 module.exports = {
-  apps : [{
-    name   : "frontend",
-    script : ".build/index.html"
-  }],
+  apps : [],
 
   deploy: {
     production: {
@@ -19,8 +14,8 @@ module.exports = {
       ref: DEPLOY_REF,
       repo: DEPLOY_REPO,
       path: DEPLOY_PATH,
-      'pre-deploy-local': 'scp .env.deploy sa_anokhin@158.160.27.79:/home/sa_anokhin/frontend/source/frontend',
-      'post-deploy': 'cd frontend && ls && npm i',
+      "post-deploy":
+        "cd frontend && npm i && npm run build && pm2 startOrRestart ecosystem.config.js --env production",
     },
   },
 };
