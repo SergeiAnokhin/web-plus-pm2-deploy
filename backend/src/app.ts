@@ -14,15 +14,7 @@ const app = express();
 mongoose.connect(DB_ADDRESS);
 
 // Только для локальных тестов. Не используйте это в продакшене
-app.use(
-  cors({
-    origin: [
-      'https://anokhin-mesto.nomoredomains.work',
-      'http://anokhin-mesto.nomoredomains.work',
-    ],
-    optionsSuccessStatus: 200,
-  }),
-);
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
